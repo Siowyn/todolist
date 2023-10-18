@@ -1,0 +1,55 @@
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+* {
+    font-family: sans-serif, Arial;
+}
+
+body {
+    font-family:  sans-serif, Arial;
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+}
+
+.ptitle {
+    color: white;
+    text-align: center;
+    margin-top: auto;
+    background-color: black;
+    height: 120px;
+    width: auto;
+}
+
+.header {
+    color: white;
+}
+
+.buttonstyle{
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    padding: 10px 60px;
+    border-radius: 10px;
+    margin: 5px 0px;
+    cursor: default;
+}
+
+.todoin{
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    padding: 10px 60px;
+    border-radius: 10px;
+    margin: 5px 0px;
+    cursor: default;
+
+}
+
+.buttonstyle:hover{
+    opacity: 80%;
+}
