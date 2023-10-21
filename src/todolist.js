@@ -14,13 +14,23 @@ function TodoList() {
   const toggle = () => setModal(!modal);
 
   return (
-    <>
-      <div className="todobutton">
-        <Button onClick={() => setModal(true)}>Create Task</Button>
-      </div>
-      <div className="task-container"></div>
-      <CreateTask toggle={toggle} modal={modal} />
-    </>
+    <div className="modalcontainer">
+      <Button color="danger" onClick={toggle}>Click Me</Button>
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalBody className="modalcss">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={toggle} className="modalbutton">
+            Do Something
+          </Button>{' '}
+          <Button color="secondary" onClick={toggle} className="modalbutton">
+            Cancel
+          </Button>
+        </ModalFooter>
+      </Modal>
+    </div>
   );
 }
 

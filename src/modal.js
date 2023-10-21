@@ -2,8 +2,8 @@ import React from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 const createTask = ({modal, toggle}) => {
-  <div>
-    <Modal isOpen={modal} toggle={toggle}>
+  <div style={{margin: 50}}>
+    <Modal isOpen={modal}  toggle={toggle}>
       <ModalHeader toggle={toggle}>Modal title</ModalHeader>
         <ModalBody>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

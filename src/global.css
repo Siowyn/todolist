@@ -53,3 +53,16 @@ body {
 .buttonstyle:hover{
     opacity: 80%;
 }
+
+.modalcss{
+    color: white;
+    height: 100px;
+    width: 400px;
+    border-radius: 10px;
+    border-color: white;
+    border: 10px;
+}
+
+.modalcontainer{
+    padding-left: 100px;
+}
