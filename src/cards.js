@@ -7,7 +7,7 @@ const Cards =({taskObject, index}) => {
     <div class = "card-top" style={{"background-color": "charteruse"}}></div>
     <div class = "task-holder">
         <span class = "card-header" style={{"background-color": "#F2FAF1", "borderRadius": "10px"}}>{taskObject.Name}</span>
-        <p>{taskObject.Description}</p>
+        <p className="descriptiontext">{taskObject.Description}</p>
 
         <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
             <i class = "far fa-edit mr-3" style={{'color' : 'white'}}></i>
