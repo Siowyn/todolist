@@ -7,36 +7,71 @@ import {
   ModalBody,
   ModalFooter,
 } from "reactstrap";
-function TodoList() {
+function TodoList(save) {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  const [taskName, setTaskName] = useState('');
+  const [description, setDescription] = useState('');
+
+  const [taskList, setTaskList] = useState([]);
+
+  const handleOnChange = (e) => {
+    const  {name, value} = e.target
+    if (name === "taskName")
+    {
+      setTaskName(value)
+    }else
+    {
+      setDescription(value)
+    }
+  }
+
+  const saveTask = (taskObject) => {
+    let tempList = taskList
+    tempList.push(taskObject)
+    setTaskList(tempList)
+    setModal(false)
+  }
+
+  const handleSave = () => {
+    let taskObject = {}
+    taskObject["Name"] = taskName
+    taskObject["Description"] = description
+    saveTask(taskObject)
+  }
 
   return (
-    <div className="modaldiv">
+    <>
+      <div className="modaldiv">
       <Buttona color="danger" onClick={toggle}>Click Me</Buttona>
-      <Modal isOpen={modal} toggle={toggle} className="modalcontainer">
+      <Modal isOpen={modal} toggle={toggle} save={saveTask}className="modalcontainer">
         <ModalHeader className="modalheader"toggle={toggle}>TODO ADD</ModalHeader>
         <ModalBody className="modalcss">
           <form>
             <div className="form-group">
-                <input type="text" className="form-control" placeholder="Task Name"></input>
+                <input name="taskName" type="text" className="form-control" placeholder="Task Name" value={taskName} onChange={handleOnChange}></input>
             </div>
             <br></br>
             <div className="form-group">
-                <textarea rows="4" className="form-control" placeholder="Task Description"></textarea>
+                <textarea name="description"rows="4" className="form-control" placeholder="Task Description" value={description}  onChange={handleOnChange}></textarea>
               </div>
           </form>
         </ModalBody>
         <ModalFooter className="modalfooter">
-          <Button color="primary" onClick={toggle} className="modalbutton">
+          <Button color="primary" onClick={handleSave} className="modalbutton">
            Create
           </Button>{' '}
+          <Button className="ghostbutton">m</Button>
           <Button color="secondary" onClick={toggle} className="modalbutton">
             Cancel
           </Button>
         </ModalFooter>
       </Modal>
     </div>
+    <div className="taskContainer">
+      {taskList.map((obj) => <li>{obj.Name}</li>)}
+    </div>
+    </>
   );
 }
 

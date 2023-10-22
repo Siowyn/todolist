@@ -87,7 +87,7 @@ body {
 .modalfooter{
     display: flex;
     justify-content: center;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 .btn-close{
@@ -98,4 +98,11 @@ body {
     display: flex;
     justify-content: left;
     width: 250px;
+}
+.ghostbutton{
+    opacity: 0;
+    visibility: none;
+}
+.taskContainer{
+    color: white;
 }
