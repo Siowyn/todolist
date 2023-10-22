@@ -58,11 +58,44 @@ body {
     color: white;
     height: 100px;
     width: 400px;
-    border-radius: 10px;
-    border-color: white;
-    border: 10px;
+    display: flex;
+    justify-content: center;
+}
+.modaldiv{
+    display: flex;
+    justify-content: center;
 }
 
+.modalheader{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.modalheader .close {
+    display:none;
+  }
 .modalcontainer{
-    padding-left: 100px;
+    display: flex;
+    justify-content: center;
+    
+}
+.modalbutton{
+    display: flexbox;
+    justify-content: center;
+}
+.modalfooter{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.btn-close{
+    display: none;
+    visibility: none;
+}
+.form-control{
+    display: flex;
+    justify-content: left;
+    width: 250px;
 }
