@@ -9,7 +9,6 @@ import {
 } from "reactstrap";
 function TodoList() {
   const [modal, setModal] = useState(false);
-
   const toggle = () => setModal(!modal);
 
   return (
