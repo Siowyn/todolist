@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import Buttona from "./button";
 import {
   Button,
@@ -13,6 +13,8 @@ function TodoList(save) {
   const [taskName, setTaskName] = useState('');
   const [description, setDescription] = useState('');
 
+
+
   const [taskList, setTaskList] = useState([]);
 
   const handleOnChange = (e) => {
@@ -25,10 +27,19 @@ function TodoList(save) {
       setDescription(value)
     }
   }
+  useEffect(() => {
+    let arr = localStorage.getItem("taskList")
+    if (arr)
+    {
+      let obj = JSON.parse(arr)
+      setTaskList(obj)
+    }
+  }, [])
 
   const saveTask = (taskObject) => {
     let tempList = taskList
     tempList.push(taskObject)
+    localStorage.setItem("taskList,", JSON.stringify(tempList))
     setTaskList(tempList)
     setModal(false)
   }
@@ -43,9 +54,9 @@ function TodoList(save) {
   return (
     <>
       <div className="modaldiv">
-      <Buttona color="danger" onClick={toggle}>Click Me</Buttona>
+      <Buttona color="danger" onClick={toggle}>Add Task</Buttona>
       <Modal isOpen={modal} toggle={toggle} save={saveTask}className="modalcontainer">
-        <ModalHeader className="modalheader"toggle={toggle}>TODO ADD</ModalHeader>
+        <ModalHeader className="modalheader"toggle={toggle}>Add Task</ModalHeader>
         <ModalBody className="modalcss">
           <form>
             <div className="form-group">
