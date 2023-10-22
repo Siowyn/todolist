@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Buttona from "./button";
+import Card from "./cards.js"
 import {
   Button,
   Modal,
@@ -55,6 +56,7 @@ function TodoList(save) {
     <>
       <div className="modaldiv">
       <Buttona color="danger" onClick={toggle}>Add Task</Buttona>
+
       <Modal isOpen={modal} toggle={toggle} save={saveTask}className="modalcontainer">
         <ModalHeader className="modalheader"toggle={toggle}>Add Task</ModalHeader>
         <ModalBody className="modalcss">
@@ -80,7 +82,7 @@ function TodoList(save) {
       </Modal>
     </div>
     <div className="taskContainer">
-      {taskList.map((obj) => <li>{obj.Name}</li>)}
+      {taskList && taskList.map((obj, index) => <Card taskObject = {obj} index={index}/>)}
     </div>
     </>
   );
