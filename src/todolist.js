@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import Buttona from "./button";
 import Card from "./cards.js"
+import { Alert } from 'reactstrap';
 function TodoList(save) {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const [taskName, setTaskName] = useState('');
   const [description, setDescription] = useState('');
-  
+  const [errorMessage, setErrorMessage] = useState('');
 
 
   const [taskList, setTaskList] = useState([]);
@@ -38,10 +38,24 @@ function TodoList(save) {
   }
 
   const handleSave = () => {
-    let taskObject = {}
-    taskObject["Name"] = taskName
-    taskObject["Description"] = description
-    saveTask(taskObject)
+    if(taskName && description)
+    {
+      let taskObject = {}
+      taskObject["Name"] = taskName
+      taskObject["Description"] = description
+      saveTask(taskObject)
+    }else
+    {
+      alert("Task Name & Description Cannot Be Empty")
+    }
+  }
+
+  const deleteTask = (index) =>{
+    let tempList = taskList
+    tempList.splice(index, 1)
+    localStorage.setItem("taskList", JSON.stringify(tempList))
+    setTaskList(tempList)
+
   }
 
   return (
@@ -51,14 +65,15 @@ function TodoList(save) {
             <div className="form-group">
                 <input name="taskName" type="text" className="form-control" placeholder="Task Name" value={taskName} onChange={handleOnChange}></input>
             </div>
+            <br></br>
             <div className="form-group">
                 <input name="description"rows="4" className="form-control" placeholder="Task Description" value={description}  onChange={handleOnChange}></input>
               </div>
           </form>
-		            <button color="primary" onClick={handleSave} className="modalbutton">Add Task</button>
+		            <button onClick={handleSave} className="modalbutton">Add Task</button>
       </div>
     <div className="taskContainer">
-      {taskList && taskList.map((obj, index) => <Card taskObject = {obj} index={index}/>)}
+      {taskList && taskList.map((obj, index) => <Card taskObject = {obj} index={index} deleteTask = {deleteTask}/>)}
     </div>
     </>
   );
