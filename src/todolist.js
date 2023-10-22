@@ -39,7 +39,7 @@ function TodoList(save) {
   const saveTask = (taskObject) => {
     let tempList = taskList
     tempList.push(taskObject)
-    localStorage.setItem("taskList,", JSON.stringify(tempList))
+    localStorage.setItem("taskList", JSON.stringify(tempList))
     setTaskList(tempList)
     setModal(false)
   }
