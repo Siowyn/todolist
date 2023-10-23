@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from "react";
 import Card from "./cards.js"
-import { Alert } from 'reactstrap';
-function TodoList(save) {
+function TodoList() {
   const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
   const [taskName, setTaskName] = useState('');
   const [description, setDescription] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
 
 
   const [taskList, setTaskList] = useState([]);
@@ -35,6 +32,7 @@ function TodoList(save) {
     tempList.push(taskObject)
     localStorage.setItem("taskList", JSON.stringify(tempList))
     setTaskList(tempList)
+    window.location.reload();
   }
 
   const handleSave = () => {
@@ -55,6 +53,7 @@ function TodoList(save) {
     tempList.splice(index, 1)
     localStorage.setItem("taskList", JSON.stringify(tempList))
     setTaskList(tempList)
+    window.location.reload();
 
   }
 
@@ -73,7 +72,7 @@ function TodoList(save) {
 		            <button onClick={handleSave} className="modalbutton">Add Task</button>
       </div>
     <div className="taskContainer">
-      {taskList && taskList.map((obj, index) => <Card taskObject = {obj} index={index} deleteTask = {deleteTask}/>)}
+       {taskList && taskList.map((obj, index) => <Card taskObject = {obj} index={index} deleteTask = {deleteTask}/>)}
     </div>
     </>
   );
